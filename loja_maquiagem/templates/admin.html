@@ -1,0 +1,14 @@
+<h1>Área ADM</h1>
+
+<form method="POST">
+  <input name="nome" placeholder="Produto">
+  <input name="preco" placeholder="Preço">
+  <button>Adicionar</button>
+</form>
+
+<h3>Produtos:</h3>
+{% for p in produtos %}
+<div>{{p[1]}} - R$ {{p[2]}}</div>
+{% endfor %}
+
+<a href="/logout">Sair</a>

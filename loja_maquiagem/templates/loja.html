@@ -1,0 +1,48 @@
+<h1>💄 Glam Beauty</h1>
+
+{% for p in produtos %}
+<div>
+  {{p[1]}} - R$ {{p[2]}}
+  <button onclick="add('{{p[1]}} - R$ {{p[2]}}')">Adicionar</button>
+</div>
+{% endfor %}
+
+<h2>🛒 Carrinho</h2>
+<div id="carrinho"></div>
+
+<h2>Finalizar Pedido</h2>
+<input id="nome" placeholder="Nome">
+<input id="telefone" placeholder="Telefone">
+<input id="endereco" placeholder="Endereço">
+
+<button onclick="finalizar()">Finalizar Pedido</button>
+
+<script>
+let carrinho = []
+
+function add(produto){
+  carrinho.push(produto)
+  render()
+}
+
+function render(){
+  let div = document.getElementById('carrinho')
+  div.innerHTML = ''
+  carrinho.forEach(p=>{
+    div.innerHTML += p + '<br>'
+  })
+}
+
+function finalizar(){
+  let nome = document.getElementById('nome').value
+  let tel = document.getElementById('telefone').value
+  let end = document.getElementById('endereco').value
+
+  if(!nome || !tel || !end){
+    alert('Preencha tudo')
+    return
+  }
+
+  alert('Pedido enviado!')
+}
+</script>
